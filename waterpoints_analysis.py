@@ -3,6 +3,7 @@ import urllib.request
 import json
 import pandas as pd
 import matplotlib.pyplot as plt
+from pandas.util.testing import assert_frame_equal
 
 #defined variable to hold input URL
 json_url = "https://raw.githubusercontent.com/onaio/ona-tech/master/data/water_points.json"
@@ -45,3 +46,14 @@ def data_analysis():
     community_ranking.plot()
 
 data_analysis()
+
+df = pd.DataFrame(data)
+df1 = df[df.water_functioning == 'yes'].water_functioning.count()
+df2 = df[df.water_functioning == 'no'].water_functioning.count()
+df5 = 2
+df3 = df1 + df2 + df5
+df4 = df['water_functioning'].count()
+
+print(df3)
+print (df4)
+(df3 == df4).all()
