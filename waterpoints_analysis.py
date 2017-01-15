@@ -48,12 +48,11 @@ def data_analysis():
 data_analysis()
 
 df = pd.DataFrame(data)
+nl = df.isnull().sum()
+print(nl)
 df1 = df[df.water_functioning == 'yes'].water_functioning.count()
 df2 = df[df.water_functioning == 'no'].water_functioning.count()
-df5 = 2
-df3 = df1 + df2 + df5
 df4 = df['water_functioning'].count()
 
-print(df3)
-print (df4)
+df3 = df1 + df2
 (df3 == df4).all()
